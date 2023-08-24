@@ -1,11 +1,11 @@
 var pokemonList=[
     
     {
-        name: 'Bulbasaur',
-        height: 0.7,
-        weight: 6.9,
-        species: 'Seed',
-        types: ['grass', 'poision']
+        name: 'Charmander',
+        height: 0.6,
+        weight: 8.5,
+        species: 'Lizard',
+        types: 'Fire'
 
     },
     {
