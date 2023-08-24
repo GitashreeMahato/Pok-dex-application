@@ -13,7 +13,7 @@ var pokemonList=[
         height: 1.1,
         weight: 32,
         species: 'Butterfly',
-        types: ['bug' , 'flying']
+        types: ['Bug' , 'Flying']
 
     },
     {
@@ -29,7 +29,7 @@ var pokemonList=[
         height: 0.5,
         weight: 5.5,
         species: 'Balloon',
-        types: ['fairy', 'normal'],
+        types: ['Fairy', 'Normal'],
 
     },
     {
@@ -37,7 +37,7 @@ var pokemonList=[
         height: 2.1,
         weight: 460,
         species: 'Dozing',
-        types: 'normal'
+        types: 'Normal'
 
     }
 ];
