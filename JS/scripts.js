@@ -5,7 +5,7 @@ var pokemonList=[
         height: 0.6,
         weight: 8.5,
         species: 'Lizard',
-        types: 'Fire'
+        types: ['Fire']
 
     },
     {
@@ -21,7 +21,7 @@ var pokemonList=[
         height: 0.4,
         weight: 6,
         species: 'Mouse',
-        types: 'Electric'
+        types: ['Electric']
 
     },
     {
@@ -37,7 +37,7 @@ var pokemonList=[
         height: 2.1,
         weight: 460,
         species: 'Dozing',
-        types: 'Normal'
+        types: ['Normal']
 
     }
 ];
