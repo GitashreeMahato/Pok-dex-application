@@ -47,17 +47,15 @@ var pokemonList=[
 const heightThreshold = 2.0;
 // loop through pokemon list
 for (let item = 0; item < pokemonList.length; item++) {
-
-    let output=`${pokemonList[item].name} (height: ${pokemonList[item].height})`;
+// printing all pokrmon list from an array
+document.write(` <p> ${pokemonList[item].name} (height: ${pokemonList[item].height}) </p>`);
 // checks wheather height is above the threshold 
 if(pokemonList[item].height > heightThreshold){
-// added the statement for big height pokemon
-    output= output.concat(` - <span> Wow, that's big! </span>`);
+    
+// printing pokemon list with a statement to identify big pokemon
+document.write(`<p>  ${pokemonList[item].name} (height: ${pokemonList[item].height} ) - <span> Wow, that's big! </span> </p>`);
 
 }
-        // printing the pokemon lists with statement for big pokemon
-
-document.write(`<p>${output}</p>`);
 
 }
 
