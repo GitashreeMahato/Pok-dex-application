@@ -41,4 +41,83 @@ var pokemonList=[
 
     }
 ];
-console.log(pokemonList);
+
+
+// initialize arraycount for the loop
+const heightThreshold = 2.0;
+// loop through pokemon list
+for (let item = 0; item < pokemonList.length; item++) {
+
+    let output=`${pokemonList[item].name} (height: ${pokemonList[item].height})`;
+// checks wheather height is above the threshold 
+if(pokemonList[item].height > heightThreshold){
+// added the statement for big height pokemon
+    output= output.concat(` - <span> Wow, that's big! </span>`);
+
+}
+        // printing the pokemon lists with statement for big pokemon
+
+document.write(`<p>${output}</p>`);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ==================       for my reference       ======================
+
+
+   // initialize arraycount for thw loop
+//     let item=0
+
+    // loop through pokemon list
+//     while (item < pokemonList.length) {
+//         let pokemons=`${pokemonList[item].name} (height : ${pokemonList[item].height})`;
+        // checks wheather height is above the threshold 
+//         if(pokemonList[item].height > heightThreshold){
+           // added the statement for big height pokemon
+//             pokemons = pokemons.concat(`- Wow, that's big!`);
+            
+           
+//         }
+        // printing the pokemon lists with statement for big pokemon
+//         document.write(`<option>${pokemons} </option>`);
+        // increment for next item
+//          item++;
+//     } 
+
+
+
+
+
+
+// let ages = [20, 30, 25, 22, 31];
+//  for (let i = 0; i < ages.length; i++) {
+//    console.log(ages[i]);
+//  }
