@@ -66,31 +66,14 @@ function add(pokemon){
     // pokemonList.push(pokemon);
 }
 
+    //  validate whether specified object keys of parameter matches to all object keys of parameter
 
-
-
-
-
-
-    //     let expectedKeys=['name', 'type', 'height'];
-    //     let actualKeys = Object.keys(pokemon);
-
-    // checking whether each pokemon is an object and checks keys of the pokemon object are present 
-    // if(typeof pokemon == 'object' && name in pokemon && height in pokemon && weight in pokemon && species in pokemon && types in pokemon){
-    //     pokemonRepository.push(pokemon);
-    // }
-    //     // checks no of actual keys matches the no of expected keys and checks all expected keys are present in the actual keys
-    //     else if(actualKeys === expectedKeys && actualKeys.every(keys => {   
-    //         return expectedKeys.includes(keys);
-    //     }))
-    //         document.write(`<p> Pokemon is not correct`);
-    //     console.log("pokemon is not correct");
-     
-    //     validate whether specified object keys of parameter matches to all object keys of parameter
    function addv(pokemon){
     let expectedKeys =['name', 'height', 'types'];
     let actualKeys = Object.keys(pokemon);
-    if(typeof pokemon=== 'object' && actualKeys.length === expectedKeys.length && expectedKeys.every(index => {
+
+     // checks no of actual keys matches the no of expected keys and checks all expected keys are present in the actual keys
+     if(typeof pokemon=== 'object' && actualKeys.length === expectedKeys.length && expectedKeys.every(index => {
         actualKeys.includes(index)
     }) ){
         pokemonList.push(pokemon);
