@@ -86,67 +86,177 @@ function findPokemonByName( minLength){
  return pokemonRepository.getAll().filter( pokemon => pokemon.name.length > minLength);
    
     }
+
+// create function where parameter represents single pokemon
+
+function addListItem(pokemon){
+    let unorderedList= document.querySelector('.pokemon-list');
+
+    // create li and button element
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+
+// set the pokemon name to button and add a class
+    button.innerText = pokemon.name;
+    button.classList.add('button');
+
+    // append button to li and li to ul
+    listItem.appendChild(button);
+    unorderedList.appendChild(listItem);
+
+    // adding event listener for button
+    // button.addEventListener('click', function(event){
+    //     showDetails(pokemon);
+    // })
+
+    // call the buttonEventListner function
+    buttonListner(button, pokemon);
+  
+    }
+
+
+// creating a function to print details of single pokemon item on console
+    function showDetails(pokemon){
+        console.log(pokemon);
+
+    }
     
+    // create a function to add eventListner to button
+
+    function buttonListner(buttons, pokemon){
+        buttons.addEventListener('click', function(event){
+            showDetails(pokemon);
+        })
+    }
 
 return{
     getAll : getAll,
     add : add,
     addv : addv,
     findPokemonByName : findPokemonByName,
+    addListItem : addListItem,
+    
 }
 })();
 
+// ------------------     Exercise 1.6    ----------------------
 
 
-// printing all pokemon list using getAll() function
-console.log(pokemonRepository.getAll());
-
+//  displaying pokemon name in DOM
 pokemonRepository.getAll().forEach(function(pokemon){
-    document.write(`<p> ${pokemon.name} : (species : ${pokemon.species})`);
+    
+    pokemonRepository.addListItem(pokemon);
 })
 
-// iterating for each function over all pokemon list with index
-pokemonRepository.getAll().forEach(function(item, index){
-    document.write(`<p> ${index+1} : ${item.name} (species : ${item.species})`);
 
 
-    // finding big pokemon based on the height
-if(item.height > 2){
-    document.write(` - Wow, that's big! `);
-}
 
-// printing  pokemon type 
-document.write(` and Type: ${item.types[0]}`);
 
-//checks pokemon second type  if it exits 
-if(item.types[1] !== undefined){
-    document.write(` and ${item.types[1]}`);
-}
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//! ======================================   for    my       reference   =======================================
+
+
+//? --------------------------------------- exercise 1.6 -------------------------------------
+// display pokemon name using option element
+    // let select = document.querySelector('.pokemon-list');
+    // let option = document.createElement('option');
+    // let button = document.createElement('button');
+    // option.innerText = pokemon.name;
+    // option.classList.add('pokemon-list_item');
+    // select.appendChild(option);
+
+
+//?--------------------------------    upto Exercise  1.5   --------------------------------
+// printing all pokemon list using getAll() function
+// console.log(pokemonRepository.getAll());
+
+// pokemonRepository.getAll().forEach(function(pokemon){
+//     document.write(`<p> ${pokemon.name} : (species : ${pokemon.species})`);
+// })
+
+// // iterating for each function over all pokemon list with index
+// pokemonRepository.getAll().forEach(function(item, index){
+//     document.write(`<p> ${index+1} : ${item.name} (species : ${item.species})`);
+
+
+//     // finding big pokemon based on the height
+// if(item.height > 2){
+//     document.write(` - Wow, that's big! `);
+// }
+
+// // printing  pokemon type 
+// document.write(` and Type: ${item.types[0]}`);
+
+// //checks pokemon second type  if it exits 
+// if(item.types[1] !== undefined){
+//     document.write(` and ${item.types[1]}`);
+// }
+// })
 
     
-//  adding new pokemon in the pokemon list
-pokemonRepository.add( {
-            name: 'Nidorina',
-            height: 0.9,
-            weight: 19.5,
-            species: 'Telekinesis',
-            types: ['Psychic']
+// //  adding new pokemon in the pokemon list
+// pokemonRepository.add( {
+//             name: 'Nidorina',
+//             height: 0.9,
+//             weight: 19.5,
+//             species: 'Telekinesis',
+//             types: ['Psychic']
     
-        })
+//         })
         
-console.log(pokemonRepository.getAll());
-// document.write(pokemonRepository.addNewPokemon);
+// console.log(pokemonRepository.getAll());
+// // document.write(pokemonRepository.addNewPokemon);
 
 
 
-//  find specific pokemon by name using length of pokemon name
+// //  find specific pokemon by name using length of pokemon name
 
-let minLength = 7;
-console.log(`Pokémon with name length greater than ${minLength} characters:`);
-console.log(pokemonRepository.findPokemonByName(minLength));
+// let minLength = 7;
+// console.log(`Pokémon with name length greater than ${minLength} characters:`);
+// console.log(pokemonRepository.findPokemonByName(minLength));
 
-
+//? ------------------------------------------------------------------------------------------------------------------
 
    
 
@@ -155,41 +265,36 @@ console.log(pokemonRepository.findPokemonByName(minLength));
 
 
 
+//? ====================================   using for loop iterated pokemon list ====================================
 
+// initialize arraycount for the loop
+// const heightThreshold = 2.0;
+// loop through pokemon list
+// for (let item = 0; item < pokemonList.length; item++) {
 
+// printing all pokrmon list from an array
+// document.write(` <p> ${pokemonList[item].name} (height: ${pokemonList[item].height}) </p>`);
 
+// checks wheather height is above the threshold 
+// if(pokemonList[item].height > heightThreshold){
+    
+// printing pokemon list with a statement to identify big pokemon
+// document.write(`<p>  ${pokemonList[item].name} (height: ${pokemonList[item].height} ) - <span> Wow, that's big! </span> </p>`);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ======================================   for    my       reference   =======================================
-
-
-
-
-
-
-// ================================     pokemonlist2   =================================================
-
-// function getPokemon(pokemon){
-//     document.write(`<p> ` + pokemonRepository.getAll());
 // }
-// pokemonList.forEach(getPokemon);
+
+// }
+
+// function printArrayDetails(list){
+//     for(let i=0; i < list.length; i++){
+//         document.write(`<p> ${list[i].name}   (species : ${list[i].species})`)
+//     }
+// }
+// printArrayDetails(pokemonList)
+// printArrayDetails(pokemonList2)
+
+
+//? ================================     pokemonlist2   =================================================
 
 
 // let pokemonList2 = [
@@ -223,43 +328,6 @@ console.log(pokemonRepository.findPokemonByName(minLength));
 //         types: ['Bug']
 //     }
 // ]
-
-// Object.keys(pokemonList2).forEach(function(pokemon2){
-//     document.write('<p>'+ pokemonList2[pokemon2].name);
-    
-// });
-
-
-// ====================================   using for loop iterated pokemon list ====================================
-
-// initialize arraycount for the loop
-// const heightThreshold = 2.0;
-// loop through pokemon list
-// for (let item = 0; item < pokemonList.length; item++) {
-
-// printing all pokrmon list from an array
-// document.write(` <p> ${pokemonList[item].name} (height: ${pokemonList[item].height}) </p>`);
-
-// checks wheather height is above the threshold 
-// if(pokemonList[item].height > heightThreshold){
-    
-// printing pokemon list with a statement to identify big pokemon
-// document.write(`<p>  ${pokemonList[item].name} (height: ${pokemonList[item].height} ) - <span> Wow, that's big! </span> </p>`);
-
-// }
-
-// }
-
-// function printArrayDetails(list){
-//     for(let i=0; i < list.length; i++){
-//         document.write(`<p> ${list[i].name}   (species : ${list[i].species})`)
-//     }
-// }
-// printArrayDetails(pokemonList)
-// printArrayDetails(pokemonList2)
-
-
-
 
 
 
