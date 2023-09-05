@@ -67,17 +67,28 @@ span{
 .pokemon-about p{
     color: #000000;
 }
-#pokemon-list{
-    margin-left: 350px;
+.pokemon-list{
+    margin-left: 270px;
     font-size: 15px;
     padding: 8px;
+    /* background-color: #b7aa1a; */
+    
+    list-style-type: none;
+
 
 }
 
-button{
-font-size: 25px;
+.button{
+font-size: 16px;
+color: #f0f8ff;
+display: inline-block;
 background-color: #0e5e2a;
-text-decoration: none;
+text-align: center;
+padding: 16px 32px;
+margin: 4px 2px;
+transition-duration: 0.2s;
+border: 1px none whitesmoke;
+border-radius: 8px;
 
 }
 .page-footer{
