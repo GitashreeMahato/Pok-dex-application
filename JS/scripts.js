@@ -67,16 +67,8 @@ function addListItem(pokemon){
     listItem.appendChild(button);
     unorderedList.appendChild(listItem);
 
-    // adding event listener for button
-    // button.addEventListener('click', function(event){
-    //     showDetails(pokemon);
-    // })
-
     // call the buttonEventListner function
     buttonListner(button, pokemon);
-    // button.addEventListener('click', function(event){
-    //     showDetails(pokemon);
-    // })
   
     }
 
@@ -96,10 +88,17 @@ function addListItem(pokemon){
         })
     }
 
+
+
+
+
+
 //  create loadlist function to load the list of pokemon
 
     function loadList(){
+        showLoadingMessage();
         return fetch(apiUrl).then(function(response){
+            hideLoadingMessage();
             return response.json();
         }).then(function(json){
             json.results.forEach(function(item){
@@ -108,8 +107,10 @@ function addListItem(pokemon){
                     detailsUrl : item.url
                 };
                 add(pokemon);
+                // console.log(pokemon);
             })
         }).catch(function(e){
+            hideLoadingMessage();
             console.error(e);
         })
     }
@@ -118,8 +119,10 @@ function addListItem(pokemon){
 // create loadDetails function to  add the detailsUrl property
 
 function loadDetails(item){
+    showLoadingMessage();
     let url = item.detailsUrl;
     return fetch(url).then(function(response){
+        hideLoadingMessage();
         return response.json();
     }).then(function(details){
         
@@ -128,9 +131,30 @@ function loadDetails(item){
         item.height = details.height;
         item.types = details.types;
     }).catch(function(e){
+        hideLoadingMessage();
         console.error(e);
     })
 }
+
+
+//   function to display the loading message
+function showLoadingMessage(){
+    let div = document.querySelector('.loadPokemon');
+    let paragraph = document.createElement('p');
+    paragraph.classList.add('loadingMessage');
+    paragraph.innerText= 'Loading......'
+    div.appendChild(paragraph);
+
+
+}
+
+// function to hide loading message
+function hideLoadingMessage(){
+    let loadingMessage= document.querySelector('.loadingMessage');
+    loadingMessage.remove();
+
+}
+
 
 return{
     getAll : getAll,
