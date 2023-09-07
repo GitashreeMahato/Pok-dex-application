@@ -88,6 +88,10 @@ border: 1px none whitesmoke;
 border-radius: 8px;
 
 }
+.button:active{
+    background-color: #b7aa1a;
+    color: #f0f8ff;
+}
 .page-footer{
 /* display: flex; */
 flex-direction: column;
