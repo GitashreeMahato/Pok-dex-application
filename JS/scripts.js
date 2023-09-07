@@ -1,49 +1,12 @@
 let pokemonRepository = (function(){
 
+let pokemonList=[]
 
-let pokemonList=[
-    
-    {
-        name: 'Charmander',
-        height: 0.6,
-        weight: 8.5,
-        species: 'Lizard',
-        types: ['Fire']
+// addded pokemon URL
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
 
-    },
-    {
-        name: 'Butterfree',
-        height: 1.1,
-        weight: 32,
-        species: 'Butterfly',
-        types: ['Bug' , 'Flying']
 
-    },
-    {
-        name: 'Pikachu',
-        height: 0.4,
-        weight: 6,
-        species: 'Mouse',
-        types: ['Electric']
 
-    },
-    {
-        name: 'Jigglypuff',
-        height: 0.5,
-        weight: 5.5,
-        species: 'Balloon',
-        types: ['Fairy', 'Normal'],
-
-    },
-    {
-        name: 'Snorlax',
-        height: 2.1,
-        weight: 460,
-        species: 'Dozing',
-        types: ['Normal']
-
-    }
-]
 // returning all pokemon object using function
 function getAll(){
     return pokemonList;
@@ -53,12 +16,12 @@ function getAll(){
 function add(pokemon){
     //  checking whether each pokemon is an object and checks keys of the pokemon object are present 
     if(typeof pokemon === 'object' && 
-    "name" in pokemon && 
-    "height" in pokemon && 
-    "weight" in pokemon && 
-    "species" in pokemon && 
-    "types" in pokemon){
-
+    "name" in pokemon){
+    // "height" in pokemon && 
+    // "weight" in pokemon && 
+    // "species" in pokemon && 
+    // "types" in pokemon 
+    
         pokemonList.push(pokemon);
     }else{
         console.log("Pokemon is not correct");
@@ -82,8 +45,8 @@ function add(pokemon){
     }
    }
 
-function findPokemonByName( minLength){
- return pokemonRepository.getAll().filter( pokemon => pokemon.name.length > minLength);
+function findPokemonByName(nameFilter){
+ return pokemonRepository.getAll().filter(pokemon => pokemon.name.includes(nameFilter)).map(pokemon => pokemon.name);
    
     }
 
@@ -111,14 +74,18 @@ function addListItem(pokemon){
 
     // call the buttonEventListner function
     buttonListner(button, pokemon);
+    // button.addEventListener('click', function(event){
+    //     showDetails(pokemon);
+    // })
   
     }
 
-
 // creating a function to print details of single pokemon item on console
     function showDetails(pokemon){
-        console.log(pokemon);
-
+        // execute details of pokemon when user click on the particular pokemon
+        pokemonRepository.loadDetails(pokemon).then(function(){
+            console.log(pokemon);
+        })
     }
     
     // create a function to add eventListner to button
@@ -129,22 +96,75 @@ function addListItem(pokemon){
         })
     }
 
+//  create loadlist function to load the list of pokemon
+
+    function loadList(){
+        return fetch(apiUrl).then(function(response){
+            return response.json();
+        }).then(function(json){
+            json.results.forEach(function(item){
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl : item.url
+                };
+                add(pokemon);
+            })
+        }).catch(function(e){
+            console.error(e);
+        })
+    }
+
+
+// create loadDetails function to  add the detailsUrl property
+
+function loadDetails(item){
+    let url = item.detailsUrl;
+    return fetch(url).then(function(response){
+        return response.json();
+    }).then(function(details){
+        
+        // add the details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+    }).catch(function(e){
+        console.error(e);
+    })
+}
+
 return{
     getAll : getAll,
     add : add,
     addv : addv,
     findPokemonByName : findPokemonByName,
     addListItem : addListItem,
+    loadList : loadList,
+    loadDetails : loadDetails,
     
 }
 })();
+
+
+// ---------------------------   Exercise 1.7    -----------------------------------
+
+
+pokemonRepository.loadList().then(function(){
+    // Now the data is loaded!
+    pokemonRepository.getAll().forEach(function(pokemon){
+        pokemonRepository.addListItem(pokemon);
+    })
+})
+
+
 
 // ------------------     Exercise 1.6    ----------------------
 
 
 //  displaying pokemon name in DOM
 pokemonRepository.getAll().forEach(function(pokemon){
-    
+let nameFilter = 'Jigglypuff';
+console.log(`Pokémon with name length greater than ${nameFilter} characters:      ${pokemonRepository.findPokemonByName(nameFilter)}`);
+// console.log(p);
     pokemonRepository.addListItem(pokemon);
 })
 
@@ -295,8 +315,49 @@ pokemonRepository.getAll().forEach(function(pokemon){
 
 
 //? ================================     pokemonlist2   =================================================
+//       pokemonList1
+// {
+//     name: 'Charmander',
+//     height: 0.6,
+//     weight: 8.5,
+//     species: 'Lizard',
+//     types: ['Fire']
 
+// },
+// {
+//     name: 'Butterfree',
+//     height: 1.1,
+//     weight: 32,
+//     species: 'Butterfly',
+//     types: ['Bug' , 'Flying']
 
+// },
+// {
+//     name: 'Pikachu',
+//     height: 0.4,
+//     weight: 6,
+//     species: 'Mouse',
+//     types: ['Electric']
+
+// },
+// {
+//     name: 'Jigglypuff',
+//     height: 0.5,
+//     weight: 5.5,
+//     species: 'Balloon',
+//     types: ['Fairy', 'Normal'],
+
+// },
+// {
+//     name: 'Snorlax',
+//     height: 2.1,
+//     weight: 460,
+//     species: 'Dozing',
+//     types: ['Normal']
+
+// }
+
+// ----------------------------------------
 // let pokemonList2 = [
 //     {
 //         name: 'Abra',
