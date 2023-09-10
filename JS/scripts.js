@@ -72,13 +72,79 @@ function addListItem(pokemon){
   
     }
 
+    function hideModal(){
+        let pokemonContainer = document.querySelector('.modal-container');
+        pokemonContainer.classList.remove('is-visible');
+    }
+
+
+
 // creating a function to print details of single pokemon item on console
+
     function showDetails(pokemon){
-        // execute details of pokemon when user click on the particular pokemon
+
+    // execute details of pokemon when user click on the particular pokemon
         pokemonRepository.loadDetails(pokemon).then(function(){
             console.log(pokemon);
+             
+//clear all existing modal content
+        let pokemonContainer = document.querySelector('.modal-container');
+        pokemonContainer.innerHTML = '';
+
+        // create new modal
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let modalName= document.createElement('h1');
+        modalName.innerText = pokemon.name;
+
+        let modalHeight = document.createElement('p'); 
+        modalHeight.innerText = 'Height : ' + pokemon.height;
+
+        let modalWeight = document.createElement('p');
+        modalWeight.innerText = 'Weight : ' + pokemon.weight;
+        
+        let imageContainer= document.createElement('img');
+        // imageContainer.classList.add('pokemon-img');
+        imageContainer.src = pokemon.imageUrl;
+        
+        let closeButton = document.createElement('button');
+        closeButton.classList.add('close-button');
+        closeButton.innerText = 'X';
+        // added close event function by clicking 'X'
+        closeButton.addEventListener('click', hideModal)
+
+        modal.appendChild(modalName);
+        modal.appendChild(modalHeight);
+        modal.appendChild(modalWeight)
+        modal.appendChild(imageContainer);
+        
+        modal.appendChild(closeButton);
+        pokemonContainer.appendChild(modal);
+
+        pokemonContainer.classList.add('is-visible');
+         
+        // added close event function by clicking outside if modal container
+        pokemonContainer.addEventListener('click', (e) =>{
+            let target = e.target;
+            if(target === pokemonContainer){
+                hideModal();
+            }
         })
+        // loadDetails(pokemon)
+            
+        })
+        
     }
+// added close event function by pressing ESC key
+    window.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape'){
+            hideModal();
+        }
+
+    })
+    
+
     
     // create a function to add eventListner to button
 
@@ -87,9 +153,6 @@ function addListItem(pokemon){
             showDetails(pokemon);
         })
     }
-
-
-
 
 
 
@@ -129,7 +192,9 @@ function loadDetails(item){
         // add the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
+        item.weight = details.weight;
         item.types = details.types;
+        
     }).catch(function(e){
         hideLoadingMessage();
         console.error(e);
@@ -139,21 +204,17 @@ function loadDetails(item){
 
 //   function to display the loading message
 function showLoadingMessage(){
-    let div = document.querySelector('.loadPokemon');
-    let paragraph = document.createElement('p');
-    paragraph.classList.add('loadingMessage');
-    paragraph.innerText= 'Loading......'
-    div.appendChild(paragraph);
-
+    console.log('Loading...');
+        console.time('Rendered');
 
 }
 
 // function to hide loading message
 function hideLoadingMessage(){
-    let loadingMessage= document.querySelector('.loadingMessage');
-    loadingMessage.remove();
-
+    console.timeEnd('Rendered');
 }
+
+
 
 
 return{
@@ -164,6 +225,9 @@ return{
     addListItem : addListItem,
     loadList : loadList,
     loadDetails : loadDetails,
+    showLoadingMessage : showLoadingMessage,
+    hideLoadingMessage : hideLoadingMessage,
+    hideModal : hideModal,
     
 }
 })();
