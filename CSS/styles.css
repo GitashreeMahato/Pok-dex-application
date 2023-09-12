@@ -118,6 +118,7 @@ border-radius: 8px;
   }
   
   .modal {
+    position: relative;
     margin: auto;
     display: inline-block;
     box-sizing: border-box;
@@ -129,11 +130,14 @@ border-radius: 8px;
   }
   
   .close-button {
-    float: right;
+    /* float: right; */
     
     border: 1;
     background: none;
     color: #777;
+    position: absolute;
+    top: 1px;
+    right: 1px;
     /* text-decoration: underline; */
   }
   
