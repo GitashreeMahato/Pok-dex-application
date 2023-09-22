@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokédex application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="CSS/styles.css">
 </head>
 
@@ -15,7 +17,168 @@
     document.write("My favorite foods are: " + favoriteFood);
     </script> -->
 
-    <header class="page-header">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="logo/pokémon_logo.svg"  width="100" height="100" class="d-inline-block align-top" alt="logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#">Porfolio</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li> -->
+            </ul>
+          </div>
+
+          
+            <form class="d-flex search-bar__form" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search for a Pokémon..."
+                aria-label="Search"
+                list="datalistOptions"
+                id="exampleDataList"
+                autocomplete="off"/>
+    
+              <datalist id="datalistOptions"></datalist>
+            </form>
+            
+      </nav>
+
+      <main class="profile">
+        <h1>All About Pokemon</h1>
+        <div class="pokemon-about">
+            <p>
+                Pokémon is a Japanese media franchise consisting of video games, animated series and films, a trading
+                card game, and other related media.
+                The franchise takes place in a shared universe in which humans co-exist with creatures known as Pokémon,
+                a large variety of species endowed with special powers.
+            </p>
+
+            <h2> Which is your favorite Pokemon?</h2>
+            <p>Pick your favorite pokemon.</p>
+        </div>
+
+    </main>
+
+
+      <div class="list-group">
+        <header class="container">                
+            <ul class="pokemon-list list-group"></ul>
+        </header>
+      </div>
+    
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    
+                </div>
+                <div class="modal-body">
+                
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+    <footer class="page-footer">
+        <p>Find on</p>
+        <img src="img/facebook_icon.svg" alt="FaceBook">
+        <img src="img/instagram _icon.svg" alt="Instagram">
+        <img src="img/youtube_icon.svg" alt="YouTube">
+        <img src="img/twitter_icon.svg" alt="Twitter">
+        <img src="img/tiktok_icon.svg" alt="TikTok">
+    </footer>
+
+
+    <script src="JS/promise-polyfill.js"></script>
+    <script src="JS/fetch-polyfill.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="JS/scripts.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    <!-- ------------------------------------------  For My Reference  ------------------- -->
+
+
+
+
+      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+        
+      </nav> -->
+
+    <!-- <header class="page-header">
         <img src="logo/pokémon_logo.svg" alt="logo" class="page-header_item">
         <nav class="main-navigation page-header__item">
             <ul role="menubar" class="navigation-list">
@@ -30,57 +193,21 @@
                 </li>
             </ul>
         </nav>
-    </header>
+    </header> -->
 
-    <main class="profile">
-        <img src="logo/pokemon_icon.svg" alt="profile-portfolio" class="pokemon-portrait">
-        <h1>All About Pokemon</h1>
-        <div class="pokemon-about">
-            <p>
-                Pokémon is a Japanese media franchise consisting of video games, animated series and films, a trading
-                card game, and other related media.
-                The franchise takes place in a shared universe in which humans co-exist with creatures known as Pokémon,
-                a large variety of species endowed with special powers.
-            </p>
-
-            <h2> Which is your favorite Pokemon?</h2>
-            <p>Pick your favorite pokemon.</p>
-        </div>
-        <!-- <div>
+    <!-- <div>
             <select name="" class="pokemon-list"></select>
         </div> -->
         <!-- <button type="submit" class="primary-botton">Go!</button> -->
-
+      <!-- 
         <div class="loadPokemon">
-            
+
             <ul class="pokemon-list"></ul>
-            
-            <!-- <div class="image-container"></div> -->
         </div>
-        <div class="modal-container">
+        <div class="modal-container"> -->
             <!-- <div class="modal">
             <h1>pokemon name</h1>
             <p>Height</p>
             <img src="" alt="">
         </div> -->
-        </div>
-
-    </main>
-    <script src="JS/scripts.js"></script>
-    <script src="JS/promise-polyfill.js"></script>
-    <script src="JS/fetch-polyfill.js"></script>
-
-
-    <footer class="page-footer">
-        <p>Find on</p>
-        <img src="img/facebook_icon.svg" alt="FaceBook">
-        <img src="img/instagram _icon.svg" alt="Instagram">
-        <img src="img/youtube_icon.svg" alt="YouTube">
-        <img src="img/twitter_icon.svg" alt="Twitter">
-        <img src="img/tiktok_icon.svg" alt="TikTok">
-    </footer>
-
-
-</body>
-
-</html>
+        <!-- </div> -->
