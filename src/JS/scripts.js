@@ -3,7 +3,7 @@ let pokemonRepository = (function(){
 let pokemonList=[]
 
 // addded pokemon URL
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
 
 
@@ -57,18 +57,20 @@ function addListItem(pokemon){
 
     // create li and button element
     let listItem = document.createElement('li');
-    listItem.classList.add('list-group-item', "mx-auto");
+    listItem.classList.add('col-12', 'col-sm-6', 'col-md-4', 'col-lg-3', 'mb-3', 'list-unstyled', 'text-center');
 
     let button = document.createElement('button');
 
 // set the pokemon name to button and add a class
     button.innerText = pokemon.name;
-    // button.classList.add('button');
-    button.classList.add('btn', 'btn-primary', 'btn-lg');
+    
+    // button.classList.add('row-lg-4');
+    button.classList.add('btn', 'btn-primary', 'btn-lg', 'btn-block');
     button.setAttribute('data-target', '#exampleModal');
     button.setAttribute('data-toggle', 'modal');
 
     // append button to li and li to ul
+    
     listItem.appendChild(button);
     unorderedList.appendChild(listItem);
 
@@ -77,6 +79,7 @@ function addListItem(pokemon){
     
   
     }
+
 
 // create modal for pokemon
     function showModal(pokemon){
@@ -220,6 +223,7 @@ return{
     showLoadingMessage : showLoadingMessage,
     hideLoadingMessage : hideLoadingMessage,
     // hideModal : hideModal,
+    // clickSearch: clickSearch,
     
 }
 })();
@@ -230,6 +234,7 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.getAll().forEach(function (pokemon) {
       pokemonRepository.addListItem(pokemon);
     });
+    // pokemonRepository.clickSearch();    
   });
 
 
@@ -237,6 +242,96 @@ pokemonRepository.loadList().then(function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+// ----------------------------------   search pokemon  -------------------------------------------
+//  //Create a function to either scroll to the selected Pokémon or alert the user about invalid Pokémon input
+//  function searchOne(pokemonName) {
+//     let resultFindOne = '';
+//     resultFindOne = pokemonList.filter(
+//         (pokemonItem) => pokemonItem.name === pokemonName
+//     );
+//     // console.log(resultFindOne); //Output: an array within an object of the filetered Pokémon
+//     //Iterate over the array of the filtered Pokémon
+//     resultFindOne.forEach(function (itemOfFindOne) {
+//         // console.log(itemOfFindOne.name + ': height is ' + itemOfFindOne.height + ', type: ' + itemOfFindOne.type + ', index:' + itemOfFindOne.id);
+
+//         //Use the "result" <a> tag to scroll to the selected Pokémon
+//         let result = document.getElementById('result');
+//         result.href = `#${itemOfFindOne.id}`;
+//         result.classList.remove('hidden_result');
+//         result.addEventListener('click', function () {
+//             result.classList.add('hidden_result');
+//         });
+//     });
+//     // console.log(resultFindOne);
+//     // console.log(resultFindOne.length);
+//     if (resultFindOne.length === 0) {
+//         alert('Sorry, we have no such a Pokémon! Try again!');
+//     }
+// }
+
+// //Create public function to search for different Pokémon at the search bar
+// function clickSearch() {
+//     let searchBtn = document.getElementById('searchBtn');
+//     searchBtn.addEventListener('click', function () {
+//         //Let's empty the href of the result <a> first
+//         let result = document.getElementById('result');
+//         result.href = '';
+//         //Get the value of the input
+//         let searchInput = document.getElementById('exampleDataList');
+//         // console.log(searchInput.value)
+//         //Call the searchOne() function and use the vaule of the input as argument
+//         searchOne(searchInput.value.toLowerCase());
+//     });
+// }
+// -------------------------------- search pokemon function -----------------------------------------
 
 // // ---------------------------   Exercise 1.7    -----------------------------------
 
