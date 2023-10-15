@@ -60,7 +60,7 @@ span{
 .profile{
     /* max-width: 1200px; */
     text-align: center;
-    margin: 0 100px;
+    /* margin: 0 100px; */
     margin-bottom: 100px;
 }
 /* .pokemon-portrait{
@@ -161,9 +161,9 @@ border-radius: 8px;
   .modal img{
     margin-left: 300px;
   } */
-.page-footer{
+/* .page-footer{ */
 /* display: flex; */
--webkit-box-orient: vertical;
+/* -webkit-box-orient: vertical;
 -webkit-box-direction: normal;
     -ms-flex-direction: column;
         flex-direction: column;
@@ -174,4 +174,4 @@ margin: 100px 0;
 }
 .page-footer p{
     color: #000000;
-}
+} */
