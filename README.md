@@ -13,7 +13,7 @@ Pokédex App is a web application that allows you to explore information about y
 
 ## Demo
 
-To see Pokemon Hub in action, check out our live demo [here](https://GitashreeMahato.github.io/Pokedex-App/).
+To see Pokemon Hub in action, check out our live demo [here](https://GitashreeMahato.github.io/Pok-dex-application/).
 
 ## Features
 
